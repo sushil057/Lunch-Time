@@ -43,28 +43,58 @@ class MenuItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      // Create a grid with 2 columns. If you change the scrollDirection to
-      // horizontal, this produces 2 rows.
-      crossAxisCount: 3,
-      // Generate 100 widgets that display their index in the List.
-      children: List.generate(10, (index) {
-        return Padding(
-          padding: const EdgeInsets.all(15),
-          child: Center(
-            child: ListView(
+    return Material(
+      child: Scaffold(
+        body: Center(
+          child: Container(
+            margin: const EdgeInsets.all(10),
+            child: const Column(
               children: [
-                Text(
-                  'Item $index',
-                  style: Theme.of(context).textTheme.headlineSmall,
-                ),
-                const Text("Description"),
-                const Text("Price")
+                FoodItemCard('Burger', 'Delicious beef burger',
+                    'assets/images/menuitems/buffmomo.jpeg'),
+                FoodItemCard('Pizza', 'Classic Margherita pizza',
+                    'assets/images/menuitems/butternaan.jpg'),
               ],
             ),
           ),
-        );
-      }),
+        ),
+      ),
+    );
+  }
+}
+
+class FoodItemCard extends StatelessWidget {
+  final String title;
+  final String description;
+  final String imagePath;
+
+  const FoodItemCard(
+    this.title,
+    this.description,
+    this.imagePath, {
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: Card(
+        child: Column(
+          children: [
+            Image.asset(
+              imagePath,
+              height: 75,
+              width: double.infinity,
+              fit: BoxFit.fitWidth,
+            ),
+            ListTile(
+              title: Text(title),
+              subtitle: Text(description),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

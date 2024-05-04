@@ -14,12 +14,21 @@ class DetailsPage extends StatelessWidget {
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
             SliverAppBar(
-              expandedHeight: 200.0,
+              backgroundColor: AppColors.primarycolor,
+              foregroundColor: AppColors.secondarycolor,
               floating: false,
               pinned: true,
               title: Text(recipe.title),
-              flexibleSpace: FlexibleSpaceBar(
-                background: Hero(
+            ),
+          ];
+        },
+        body: Container(
+          color: AppColors.secondarycolor,
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Column(
+              children: <Widget>[
+                Hero(
                   tag: recipe.id,
                   child: FadeInImage(
                     image: NetworkImage(recipe.imageUrl),
@@ -27,17 +36,6 @@ class DetailsPage extends StatelessWidget {
                     placeholder: const AssetImage('assets/images/loading.gif'),
                   ),
                 ),
-              ),
-            ),
-          ];
-        },
-        body: Container(
-          color: AppColors.secondarycolor,
-          padding: const EdgeInsets.only(top: 8.0),
-          child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: Column(
-              children: <Widget>[
                 const Text('Nutrition',
                     style: TextStyle(
                         color: Colors.black,
@@ -59,7 +57,10 @@ class DetailsPage extends StatelessWidget {
                 const Divider(
                     color: Colors.black, endIndent: 40.0, indent: 40.0),
                 const Text('Steps',
-                    style: TextStyle(color: Colors.black, fontSize: 20)),
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold)),
                 RecipeSteps(
                   steps: recipe.steps,
                 )

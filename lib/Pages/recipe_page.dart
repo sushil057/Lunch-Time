@@ -5,8 +5,8 @@ import 'package:my_app/components/drawer.dart';
 import 'package:my_app/components/utils/data.dart';
 import 'package:my_app/components/utils/details.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class Recipes extends StatelessWidget {
+  const Recipes({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,11 +23,13 @@ class HomePage extends StatelessWidget {
               child: InkWell(
                 onTap: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => DetailsPage(
-                                recipe: Data.recipes[index],
-                              )));
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DetailsPage(
+                        recipe: Data.recipes[index],
+                      ),
+                    ),
+                  );
                 },
                 child: Card(
                   color: Theme.of(context).hintColor,
@@ -81,7 +83,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.primarycolor,
         foregroundColor: AppColors.secondarycolor,
-        title: const Text("Recipies"),
+        title: const Text("All Recipes"),
         actions: [
           IconButton(
             icon: const Icon(Icons.account_box),

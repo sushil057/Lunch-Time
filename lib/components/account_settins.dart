@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/Pages/login_page.dart';
-import 'package:my_app/Pages/signup_page.dart';
 import 'package:my_app/components/colors.dart';
 
 class AccountSettings extends StatelessWidget {
@@ -8,77 +6,99 @@ class AccountSettings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: AlertDialog(
-        backgroundColor: AppColors.secondarycolor,
-        alignment: Alignment.center,
-        title: const SizedBox(
-          // color: AppColors.primarycolor,
-          child: Text(
-            "Account Settings",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              // color: AppColors.secondarycolor,
+    return Stack(
+      children: [
+        // Dialog box with opaque background
+        Positioned.fill(
+          child: Align(
+            alignment: Alignment.center,
+            child: Dialog(
+              backgroundColor: Colors.white, // Opaque background color
+              elevation: 10,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  // Close button in the AppBar
+
+                  AppBar(
+                    title: Center(
+                      child: Text(
+                        "Account Settings",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: AppColors.secondarycolor,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    backgroundColor: AppColors.primarycolor,
+                    elevation: 0,
+                    automaticallyImplyLeading: false, // Hide back button
+                    actions: [
+                      IconButton(
+                        icon: Icon(
+                          Icons.close,
+                          color: AppColors.secondarycolor,
+                        ),
+                        onPressed: () {
+                          Navigator.pop(context); // Close the dialog
+                        },
+                      ),
+                    ],
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(20),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        // Three buttons
+                        TextButton(
+                          onPressed: () {
+                            // Handle action
+                          },
+                          child: const Text(
+                            "Edit Pesonal Details",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            // Handle action
+                          },
+                          child: const Text(
+                            "Change Photo",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            // Handle action
+                          },
+                          child: const Text(
+                            "Logout",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
-        content: SizedBox(
-          width: double.maxFinite,
-          child: ListView(
-            shrinkWrap: true,
-            children: <Widget>[
-              TextButton(
-                child: const ListTile(
-                  leading: Icon(Icons.person_outline),
-                  title: Text(
-                    "Edit Personal Details",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                onPressed: () {},
-              ),
-              TextButton(
-                child: const ListTile(
-                  leading: Icon(Icons.add),
-                  title: Text(
-                    "Add new account",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const SignupPage(),
-                    ),
-                  );
-                },
-              ),
-              TextButton(
-                child: const ListTile(
-                  leading: Icon(Icons.logout),
-                  title: Text(
-                    "Log Out",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const LoginPage(),
-                    ),
-                  );
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
+      ],
     );
   }
 }

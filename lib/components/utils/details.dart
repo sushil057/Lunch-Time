@@ -32,7 +32,7 @@ class DetailsPage extends StatelessWidget {
           ];
         },
         body: Container(
-          color: Theme.of(context).primaryColor,
+          color: AppColors.secondarycolor,
           padding: const EdgeInsets.only(top: 8.0),
           child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
@@ -40,26 +40,26 @@ class DetailsPage extends StatelessWidget {
               children: <Widget>[
                 const Text('Nutrition',
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 20)),
                 NutritionWidget(
                   nutrients: recipe.nutrients,
                 ),
                 const Divider(
-                    color: Colors.white, endIndent: 40.0, indent: 40.0),
+                    color: Colors.black, endIndent: 40.0, indent: 40.0),
                 const Text('Ingredients',
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 20)),
                 IngredientsWidget(
                   ingredients: recipe.ingredients,
                 ),
                 const Divider(
-                    color: Colors.white, endIndent: 40.0, indent: 40.0),
+                    color: Colors.black, endIndent: 40.0, indent: 40.0),
                 const Text('Steps',
-                    style: TextStyle(color: Colors.white, fontSize: 20)),
+                    style: TextStyle(color: Colors.black, fontSize: 20)),
                 RecipeSteps(
                   steps: recipe.steps,
                 )
@@ -87,15 +87,15 @@ class RecipeSteps extends StatelessWidget {
       itemBuilder: (BuildContext context, int index) {
         return ListTile(
             leading: CircleAvatar(
-              backgroundColor: Theme.of(context).hintColor,
+              backgroundColor: AppColors.primarycolor,
               child: Text('${index + 1}',
                   style: const TextStyle(
                       color: Colors.black, fontWeight: FontWeight.bold)),
             ),
             title: Text(steps[index],
-                style: TextStyle(
-                    color: AppColors.secondarycolor,
-                    fontWeight: FontWeight.bold,
+                style: const TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.normal,
                     fontSize: 16)));
       },
     );
@@ -120,7 +120,7 @@ class IngredientsWidget extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Chip(
-              backgroundColor: Theme.of(context).hintColor,
+              backgroundColor: AppColors.primarycolor,
               label: Text(
                 ingredients![index],
                 style: const TextStyle(

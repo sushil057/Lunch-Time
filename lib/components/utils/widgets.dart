@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:my_app/components/colors.dart';
 import 'package:my_app/components/utils/data.dart';
 
 class CircleIndicator extends StatefulWidget {
@@ -46,11 +47,11 @@ class _CircleIndicatorState extends State<CircleIndicator>
               children: <Widget>[
                 Text(
                   widget.nutrient.name,
-                  style: const TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.black),
                 ),
                 Text(
                   widget.nutrient.weight,
-                  style: const TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.black),
                 ),
               ],
             ),
@@ -74,7 +75,7 @@ class CirclePainter extends CustomPainter {
 
   CirclePainter(this._fraction) {
     _paint = Paint()
-      ..color = const Color(0xff8DB646)
+      ..color = AppColors.primarycolor
       ..strokeWidth = 5.0
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke;

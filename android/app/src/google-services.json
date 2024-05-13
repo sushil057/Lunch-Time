@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1022654122678",
+    "project_id": "lunch-time-9930e",
+    "storage_bucket": "lunch-time-9930e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1022654122678:android:8a528afa7a6435744bb417",
+        "android_client_info": {
+          "package_name": "com.example.learn_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjqA9dRIjDjV9AtgK-iMweO9dCd6XiLuE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

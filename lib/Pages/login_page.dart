@@ -1,11 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:my_app/Pages/home_page.dart';
 import 'package:my_app/Pages/signup_page.dart';
+import 'package:my_app/auth/AuthenticationHelper.dart';
 import 'package:my_app/components/colors.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
+  @override
+  State<LoginPage> createState() => _LoginPageState();
 
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -39,7 +56,8 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  const TextField(
+                  TextField(
+                    controller:emailController,
                     decoration: InputDecoration(
                       hintText: "Email/Username",
                       prefixIcon: Icon(
@@ -52,7 +70,8 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  const TextField(
+                  TextField(
+                    controller:passwordController,
                     obscureText: true,
                     decoration: InputDecoration(
                       hintText: "Password",
@@ -85,9 +104,11 @@ class LoginPage extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const HomePage(),
-                        ));
+                        //on click login
+                        if (emailController.text.isEmpty || passwordController.text.isEmpty){
+                          return;
+                        }
+                        login(emailController.text, passwordController.text, context);
                       },
                     ),
                   ),
@@ -180,4 +201,26 @@ class LoginPage extends StatelessWidget {
       ),
     );
   }
+  void login(String email,String password,BuildContext context){
+    AuthenticationHelper()
+        .signIn(email: email, password: password)
+        .then((result) {
+      if (result == null) {
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const HomePage()));
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(
+            result,
+            style: TextStyle(fontSize: 16),
+          ),
+        ));
+      }
+    });
+
+
+
+  }
 }
+
+

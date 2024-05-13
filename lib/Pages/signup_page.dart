@@ -2,9 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:my_app/Pages/login_page.dart';
 import 'package:my_app/components/colors.dart';
 
-class SignupPage extends StatelessWidget {
-  const SignupPage({super.key});
+import '../auth/AuthenticationHelper.dart';
 
+class SignupPage extends StatefulWidget {
+  const SignupPage({super.key});
+ 
+  @override
+  State<SignupPage> createState() => _SignupPageState();
+}
+
+class _SignupPageState extends State<SignupPage> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController fullNameController=TextEditingController();
+  final TextEditingController userNameController=TextEditingController();
+  final TextEditingController confirmPasswordController=TextEditingController();
+ 
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    emailController.dispose();
+    passwordController.dispose();
+    fullNameController.dispose();
+    userNameController.dispose();
+    confirmPasswordController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -48,10 +72,11 @@ class SignupPage extends StatelessWidget {
                               color: AppColors.primarycolor,
                             ),
                             border:
-                                OutlineInputBorder(borderSide: BorderSide())),
+                            OutlineInputBorder(borderSide: BorderSide())),
                       ),
                       const SizedBox(height: 20),
-                      const TextField(
+                      TextField(
+                        controller:emailController,
                         decoration: InputDecoration(
                             hintText: "Email",
                             prefixIcon: Icon(
@@ -59,10 +84,11 @@ class SignupPage extends StatelessWidget {
                               color: AppColors.primarycolor,
                             ),
                             border:
-                                OutlineInputBorder(borderSide: BorderSide())),
+                            OutlineInputBorder(borderSide: BorderSide())),
                       ),
                       const SizedBox(height: 20),
-                      const TextField(
+                      TextField(
+                        controller:userNameController,
                         decoration: InputDecoration(
                             hintText: "Username",
                             prefixIcon: Icon(
@@ -70,10 +96,11 @@ class SignupPage extends StatelessWidget {
                               color: AppColors.primarycolor,
                             ),
                             border:
-                                OutlineInputBorder(borderSide: BorderSide())),
+                            OutlineInputBorder(borderSide: BorderSide())),
                       ),
                       const SizedBox(height: 20),
-                      const TextField(
+                      TextField(
+                        controller: passwordController,
                         obscureText: true,
                         decoration: InputDecoration(
                             hintText: "Password",
@@ -82,10 +109,11 @@ class SignupPage extends StatelessWidget {
                               color: AppColors.primarycolor,
                             ),
                             border:
-                                OutlineInputBorder(borderSide: BorderSide())),
+                            OutlineInputBorder(borderSide: BorderSide())),
                       ),
                       const SizedBox(height: 20),
-                      const TextField(
+                      TextField(
+                        controller:confirmPasswordController,
                         obscureText: true,
                         decoration: InputDecoration(
                             hintText: "Confirm Password",
@@ -94,7 +122,7 @@ class SignupPage extends StatelessWidget {
                               color: AppColors.primarycolor,
                             ),
                             border:
-                                OutlineInputBorder(borderSide: BorderSide())),
+                            OutlineInputBorder(borderSide: BorderSide())),
                       ),
                       const SizedBox(height: 20),
                       Container(
@@ -112,11 +140,11 @@ class SignupPage extends StatelessWidget {
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold)),
                           onPressed: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => const LoginPage(),
-                              ),
-                            );
+                            if(emailController.text.isEmpty || passwordController.text.isEmpty)
+                            {
+                              return;
+                            }
+                              signUp(emailController.text,passwordController.text);
                           },
                         ),
                       ),
@@ -139,7 +167,7 @@ class SignupPage extends StatelessWidget {
                             ),
                             onPressed: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const LoginPage(),
+                                builder: (context) => LoginPage(),
                               ));
                             },
                           ),
@@ -153,4 +181,23 @@ class SignupPage extends StatelessWidget {
       ),
     );
   }
+  void signUp(String email,String password){
+    AuthenticationHelper()
+        .signUp(email: email, password: password)
+        .then((result) {
+      if (result == null) {
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => LoginPage(),
+        ));
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(
+            result,
+            style: TextStyle(fontSize: 16),
+          ),
+        ));
+      }
+    });
+  }
 }
+

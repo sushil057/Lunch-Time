@@ -125,6 +125,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:my_app/Pages/categories/nepalese_cusines.dart';
 import 'package:my_app/components/account_settins.dart';
 import 'package:my_app/components/colors.dart';
 import 'package:my_app/components/drawer.dart';
@@ -189,7 +190,12 @@ class _HomePageState extends State<HomePage> {
                 HomeTile(
                   image: 'assets/images/menuitems/combokhana.jpg',
                   text: "Nepalese Cuisines",
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (BuildContext context) {
+                      return const NepaleseCusines();
+                    }));
+                  },
                 ),
                 HomeTile(
                   image: 'assets/images/menuitems/butternaan.jpg',

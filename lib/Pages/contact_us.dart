@@ -85,13 +85,13 @@ class Contact extends StatelessWidget {
                   },
                 ),
                 IconButton(
-                  icon: Icon(Icons.facebook),
+                  icon: const Icon(Icons.facebook),
                   onPressed: () {
                     // Handle tapping Twitter
                   },
                 ),
                 IconButton(
-                  icon: Icon(Icons.facebook),
+                  icon: const Icon(Icons.facebook),
                   onPressed: () {
                     // Handle tapping Instagram
                   },
@@ -108,10 +108,19 @@ class Contact extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.primarycolor,
+                foregroundColor: AppColors.secondarycolor,
+              ),
               onPressed: () {
                 // Handle tapping send message button
               },
-              child: const Text('Send Message'),
+              child: const Text(
+                'Send Message',
+                style: TextStyle(
+                  fontSize: 16,
+                ),
+              ),
             ),
           ],
         ),

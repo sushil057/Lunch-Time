@@ -126,12 +126,16 @@ class SignupPage extends StatelessWidget {
                         children: [
                           const Text(
                             "Already have an account?",
-                            style: TextStyle(fontSize: 16),
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
                           ),
                           TextButton(
                             child: const Text(
                               "Login",
-                              style: TextStyle(fontSize: 16),
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: AppColors.primarycolor,
+                                  fontWeight: FontWeight.bold),
                             ),
                             onPressed: () {
                               Navigator.of(context).push(MaterialPageRoute(

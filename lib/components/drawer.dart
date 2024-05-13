@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:my_app/Pages/about_us.dart';
 import 'package:my_app/Pages/contact_us.dart';
 import 'package:my_app/Pages/home_page.dart';
+import 'package:my_app/Pages/login_page.dart';
 import 'package:my_app/Pages/recipe_page.dart';
+import 'package:my_app/Pages/signup_page.dart';
 import 'package:my_app/components/colors.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -98,6 +100,72 @@ class MyDrawer extends StatelessWidget {
                 ),
               );
             },
+          ),
+          Container(
+            height: MediaQuery.of(context).size.height * 0.14,
+            margin: const EdgeInsets.only(top: 40),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                TextButton(
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18)),
+                    ),
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                        AppColors.primarycolor),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 35, right: 35),
+                    child: Text(
+                      "Login",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.secondarycolor,
+                      ),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const LoginPage(),
+                      ),
+                    );
+                  },
+                ),
+                TextButton(
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18)),
+                    ),
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                        AppColors.primarycolor),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 35, right: 35),
+                    child: Text(
+                      "Signup",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.secondarycolor,
+                      ),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const SignupPage(),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
         ],
       ),

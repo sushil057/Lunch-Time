@@ -10,6 +10,7 @@ class CircleIndicator extends StatefulWidget {
   const CircleIndicator(
       {super.key, this.percent = 0.5, required this.nutrient});
   @override
+  // ignore: library_private_types_in_public_api
   _CircleIndicatorState createState() => _CircleIndicatorState();
 }
 
@@ -71,7 +72,7 @@ class _CircleIndicatorState extends State<CircleIndicator>
 
 class CirclePainter extends CustomPainter {
   late Paint _paint;
-  double _fraction;
+  final double _fraction;
 
   CirclePainter(this._fraction) {
     _paint = Paint()

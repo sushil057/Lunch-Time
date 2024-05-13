@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/Pages/login_page.dart';
 import 'package:my_app/components/colors.dart';
 
 class AccountSettings extends StatelessWidget {
@@ -23,7 +24,6 @@ class AccountSettings extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   // Close button in the AppBar
-
                   AppBar(
                     title: Center(
                       child: Text(
@@ -56,7 +56,6 @@ class AccountSettings extends StatelessWidget {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        // Three buttons
                         TextButton(
                           onPressed: () {
                             // Handle action
@@ -65,6 +64,7 @@ class AccountSettings extends StatelessWidget {
                             "Edit Pesonal Details",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
+                              fontSize: 16,
                             ),
                           ),
                         ),
@@ -76,16 +76,22 @@ class AccountSettings extends StatelessWidget {
                             "Change Photo",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
+                              fontSize: 16,
                             ),
                           ),
                         ),
                         TextButton(
                           onPressed: () {
-                            // Handle action
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => const LoginPage(),
+                              ),
+                            );
                           },
                           child: const Text(
                             "Logout",
                             style: TextStyle(
+                              fontSize: 16,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

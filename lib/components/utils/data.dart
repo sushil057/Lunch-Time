@@ -17,6 +17,8 @@ class Recipe {
       required this.steps,
       required this.ingredients,
       required this.nutrients});
+
+  get name => null;
 }
 
 class Data {

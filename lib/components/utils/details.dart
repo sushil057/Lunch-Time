@@ -31,6 +31,7 @@ class DetailsPage extends StatelessWidget {
                 Hero(
                   tag: recipe.id,
                   child: FadeInImage(
+                    fadeInDuration: const Duration(seconds: 1),
                     image: NetworkImage(recipe.imageUrl),
                     fit: BoxFit.cover,
                     placeholder: const AssetImage('assets/images/loading.gif'),

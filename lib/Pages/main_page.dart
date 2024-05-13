@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/Pages/login_page.dart';
+import 'package:my_app/Pages/home_page.dart';
 import 'package:my_app/components/colors.dart';
 
 class MyApp extends StatelessWidget {
@@ -79,7 +79,7 @@ class MainPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => const LoginPage(),
+                        builder: (context) => const HomePage(),
                       ),
                     );
                   },

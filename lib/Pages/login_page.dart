@@ -29,7 +29,6 @@ class LoginPage extends StatelessWidget {
                     "assets/images/lunchtime_logo.png",
                     height: 200,
                     width: 170,
-                    // fit: BoxFit.scaleDown,
                   ),
                   const Text(
                     "Welcome",
@@ -92,7 +91,14 @@ class LoginPage extends StatelessWidget {
                       },
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 10),
+                  const Divider(
+                    color: Colors.black, // Line color
+                    thickness: 2.0, // Line thickness
+                    indent: 0, // Left padding
+                    endIndent: 0, // Right padding
+                  ),
+                  const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
@@ -107,9 +113,7 @@ class LoginPage extends StatelessWidget {
                                 color: AppColors.primarycolor,
                               ),
                             ),
-                            textStyle: const TextStyle(
-                                // decoration: TextDecoration.underline,
-                                color: Colors.black)),
+                            textStyle: const TextStyle(color: Colors.black)),
                         child: Image.asset(
                           "assets/images/search.png",
                           height: 40,
@@ -128,9 +132,7 @@ class LoginPage extends StatelessWidget {
                                 color: AppColors.primarycolor,
                               ),
                             ),
-                            textStyle: const TextStyle(
-                                // decoration: TextDecoration.underline,
-                                color: Colors.black)),
+                            textStyle: const TextStyle(color: Colors.black)),
                         child: Image.asset(
                           "assets/images/facebook.png",
                           height: 40,
@@ -141,12 +143,6 @@ class LoginPage extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 10),
-                  // const Divider(
-                  //   color: Colors.black, // Line color
-                  //   thickness: 2.0, // Line thickness
-                  //   indent: 0, // Left padding
-                  //   endIndent: 0, // Right padding
-                  // ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -159,11 +155,11 @@ class LoginPage extends StatelessWidget {
                         ),
                       ),
                       TextButton(
-                        child: Text(
+                        child: const Text(
                           "Register",
                           style: TextStyle(
                             backgroundColor: Colors.transparent,
-                            color: Colors.blue.shade500,
+                            color: AppColors.primarycolor,
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
